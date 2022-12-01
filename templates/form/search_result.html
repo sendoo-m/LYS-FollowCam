@@ -1,0 +1,94 @@
+{% extends 'parties/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Result Student |نتيجة البحث {% endblock %} 
+{% block content %}
+
+
+<div class="container mt-3">
+  <br />
+  <br />
+  {% if data %}
+  {% for data in data %}
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">المصاريف المدرسية</div>
+          <th scope="col">نشاط</div>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr>
+          <th>18416.59</th>
+          <th>367</th>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">كود</th>
+            <th scope="col">اسم الطالب</th>
+            <!--<th scope="col">الرقم القومي</th>-->
+            <th scope="col">خصم</th>
+            <th scope="col">الصافي</th>
+            <th scope="col">القسط الاول</th>
+            <th scope="col">ايصال رقم</th>
+            <th scope="col">القسط الثاني</th>
+            <th scope="col">ايصال رقم</th>
+            <th scope="col">القسط الثالث</th>
+            <th scope="col">ايصال رقم</th>
+            <th scope="col">الباقي</th>
+            <th scope="col">بتاريخ</th>
+            <th scope="col">تعديل</th>
+
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          
+          <tr>
+            <th scope="row">{{ data.id }}</th>
+            <td>{{ data.name }}</td>
+            <!--<td>{{ data.id_number }}</td>-->
+            <td>{{ data.discount }}</td>
+            <td>{{ data.net_expenses }}</td>
+            <td>{{ data.f_installment }}</td>
+            <td>{{ data.f_receipt_number }}</td>
+            <td>{{ data.s_installment }}</td>
+            <td>{{ data.s_receipt_number }}</td>
+            <td>{{ data.th_installment }}</td>
+            <td>{{ data.th_receipt_number }}</td>
+            <td>{{ data.remaining_amount }}</td>
+            <td>{{ data.created_at }}</td>
+            <td><a href="{% url 'edit' data.id  %}" class="btn btn-info btm-sm">دفع القسط</a></td>
+                    
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+      
+    {% else %}
+    <h3 style="color: darkred;">الاسم او الرقم القومي غير صحيح</h3>
+    <br />
+    <p> <a href="{% url 'studentform_form' %}" class='btn btn-info'>إضافة طالب</a> or .. <a href="{% url 'search' %}" class='btn btn-info'>البحث مرة أخري</a></p>
+    {% endif %}
+      <!-- ####################################        
+      # # All Fields Frome Models.py
+      #          
+      #     name             
+      #     id_number        
+      #     school_fees      
+      #     activity         
+      #     discount         
+      #     net_expenses     
+      #     f_installment    
+      #     f_receipt_number 
+      #     s_installment    
+      #     s_receipt_number 
+      #     th_installment   
+      #     th_receipt_number
+      #     remaining_amount 
+      #################################### -->
+
+{% endblock content %}

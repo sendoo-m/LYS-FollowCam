@@ -1,0 +1,65 @@
+{% extends 'parties/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Edit Student|دفع المصاريف {% endblock %} 
+{% block content %}
+
+
+<div class="container mt-3" style='width: 95%; font-size: 14px'>
+    <br >
+    <br >
+    <!-- Message from backend [Success views.py] -->
+<div class="text-center">
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">{{message}}
+            <a href=" {% url 'edit' %} " type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close" ></a>
+        </div>   
+    {% endif %}
+    {% endfor %}
+    </div>
+    <!-- End Message from backend -->
+    
+        <form method="POST" enctype="multipart/form-data" class=" mt-3" autocomplete="off" novalidate>
+            {% csrf_token %}
+            <!-- Card 1 -->
+        <div class="card border-dark p-3">
+            <span class="btn btn-secondary mb-4" style="cursor: default">
+                &nbsp; &nbsp; | قم بإضافة DVR |  &nbsp; &nbsp; 
+            </span>
+            <div class="row">
+                {% comment %} <div class="col-4">{{ updatehtml.name|as_crispy_field }}</div> {% endcomment %}
+                
+                <div><hr style="border: 1px solid #007bff;"></div>
+            </div>
+            <div class="row">
+                <div class="btn btn-secondary mb-4" style="cursor: default"> الاقساط والايصالات</div>
+                
+                {% comment %} <div class="col-4">{{ updatehtml.f_date|as_crispy_field }}</div> {% endcomment %}
+                
+                
+
+            </div>
+            <div class="row">
+                
+                {% comment %} <div class="col-4">{{ updatehtml.th_date|as_crispy_field }}</div> {% endcomment %}
+
+                
+                <div><hr style="border: 1px solid #007bff;"></div>
+            </div>
+        </div>
+        <br />
+        <div class="card border-dark p-3">
+           
+            <div><hr style="border: 1px solid #007bff;"></div>
+            <button type="submit" class="btn btn-outline-primary mt-3" style="width: 90px">submit</button>
+        </div>
+    
+    </form>
+    <!-- End Form -->
+    
+    </div> <!--End container-->
+    <br >
+    <br >
+    <br >
+    <br >
+{% endblock %}
