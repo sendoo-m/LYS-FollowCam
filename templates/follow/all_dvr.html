@@ -1,11 +1,10 @@
 {% extends 'parties/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}All DVR|جميع الاجهزة بالمبني{% endblock %} 
+{% block title %}All DVR|جميع الاجهزة بالمبني{% endblock title %}
 {% block content %}
 
 <div class="container mt-3" style='width: 95%; font-size: 14px'>
-  <br >
-  <br >
+  
   <table class="table table-striped table-hover">
     <thead>
       <tr>
@@ -25,7 +24,7 @@
         <td>{{ add.floor }}</td>
         <td>{{ add.build }}</td>
         <td>{{ add.ips }}</td>
-        <td><a href="#" class="btn btn-info btm-sm">متابعة الكاميرات</a></td>
+        <td><a href="{% url 'follow_dvr' %}" class="btn btn-info btm-sm">متابعة الكاميرات</a></td>
         {% endfor %}            
       </tr>
     </tbody>

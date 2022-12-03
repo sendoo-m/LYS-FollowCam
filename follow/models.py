@@ -14,9 +14,11 @@ BUILDING        = (
 )
 
 FOLLOW          =(
+    ('','اختار الحالة'),
     ('يعمل بكفائه','يعمل بكفائه'),
     ('توجد مشكلة','توجد مشكلة'),
     ('تم حل المشكلة','تم حل المشكلة'), 
+    ('تم تغيير القطعة','تم تغيير القطعة'), 
 )
 
 class Add_DVR(models.Model):
@@ -46,5 +48,6 @@ class Follow(models.Model):
     power           = models.CharField(choices=FOLLOW, max_length=30, null=True, blank=True)
     lan             = models.CharField(choices=FOLLOW, max_length=30, null=True, blank=True)
     created_at      = models.DateTimeField(auto_now_add=True, null=True, blank=True )
+    notes           = models.CharField(max_length=500, null=True, blank=True)
 
     

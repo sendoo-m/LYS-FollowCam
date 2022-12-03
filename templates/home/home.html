@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
 <div class='container'>
 
 <div class="row text-center m-5" >
@@ -11,4 +12,7 @@
 
     
 </div>
+{% else %}
+    {% include 'user/login.html' %} 
+{% endif %}
 {% endblock content %}

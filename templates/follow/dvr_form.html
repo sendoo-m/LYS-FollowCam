@@ -1,6 +1,6 @@
 {% extends 'parties/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Add New Student| تسجيل طالب{% endblock %} 
+{% block title %}Add New DVR|  تسجيل جديد {% endblock title %} 
 {% block content %}
 
 
@@ -54,7 +54,7 @@
 {% for message in messages %}
 {% if message.tags == 'success' %}
     <div class="alert alert-primary alert-dismissible fade show" role="alert">{{message}}
-        <a href=" {% url '/form' %} " type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close" ></a>
+        <a href=" {% url '/follow_dvr' %} " type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close" ></a>
     </div>   
 {% endif %}
 {% endfor %}
@@ -69,40 +69,19 @@
                 &nbsp; &nbsp; | قم بإضافة DVR |  &nbsp; &nbsp; 
         </span>
         <div class="row">
-            {% comment %} <div class="col-4">{{ form.name|as_crispy_field }}</div> {% endcomment %}
+            <div class="col-4">{{ form.name|as_crispy_field }}</div>
+            <div class="col-4">{{ form.floor|as_crispy_field }}</div>
+            <div class="col-4">{{ form.ips|as_crispy_field }}</div>
+            <div class="col-4">{{ form.ports|as_crispy_field }}</div>
+            <div class="col-4">{{ form.build|as_crispy_field }}</div>
             
-            
-            <div><hr style="border: 1px solid #007bff;"></div>
-        </div>
-        <div class="row">
-            <div class="btn btn-secondary mb-4" style="cursor: default"> الاقساط والايصالات</div>
-            
-            
-            {% comment %} <div class="col-4">{{ form.f_date|as_crispy_field }}</div> {% endcomment %}
-        </div>
-        {% comment %} <div class="row">
-
-            <div class="col-4">{{ form.s_installment|as_crispy_field }}</div>
-            
-            
-
-        </div> {% endcomment %}
-        <div class="row">
-            {% comment %} <div class="col-3">{{ form.th_installment|as_crispy_field }}</div>
-            <div class="col-3">{{ form.th_receipt_number|as_crispy_field }}</div>
-            <div class="col-3">{{ form.th_date|as_crispy_field }}</div> {% endcomment %}
-
-           
-            
-            <div><hr style="border: 1px solid #007bff;"></div>
-        </div>
+                    
     </div>
     <br />
-    <div class="card border-dark p-3">
-       
-        <div><hr style="border: 1px solid #007bff;"></div>
-        <button type="submit" class="btn btn-outline-primary mt-3" style="width: 90px">submit</button>
-    </div>
+    <div><hr style="border: 1px solid #007bff;"></div>
+    <button type="submit" class="btn btn-outline-primary mt-3" style="width: 90px">إضافة</button>
+    
+    
 
 </form>
 <!-- End Form -->

@@ -1,0 +1,67 @@
+{% extends 'parties/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}All DVR|  إجمالي التقرير{% endblock title %}
+{% block content %}
+
+<div class="container mt-3" style='width: 95%; font-size: 14px'>
+  
+  <div class="card border-dark p-3">
+    <span class="btn btn-secondary mb-4" style="cursor: default">
+      تقرير إجمالي المباني بجميع DVR
+    </span>
+  
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">اسم DVR</th>
+        <th scope="col">الصورة </th>
+        <th scope="col">الصوت</th>
+        <th scope="col">التسجيل</th>
+        <th scope="col">حالة الهارد</th>
+        <th scope="col">مزود الطاقة</th>
+        <th scope="col">كابل الشبكة</th>
+        <th scope="col">بتاريخ</th>
+        <th scope="col">ملاحظات</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for add in follow_results %}
+      <tr>
+        <th scope="row"><a href="{% url 'all_dvr' %}">{{ add.dvr }}</a></th>
+        <td>{{ add.images }}</td>
+        <td>{{ add.mic }}</td>
+        <td>{{ add.record }}</td>
+        <td>{{ add.hdd }}</td>
+        <td>{{ add.power }}</td>
+        <td>{{ add.lan }}</td>
+        <td>{{ add.created_at }}</td>
+        <td>{{ add.notes }}</td>
+        {% endfor %}            
+      </tr>
+    </tbody>
+  </table> 
+
+</div>
+      
+</div> <!--End container-->
+<br >
+<br >
+<br >
+<br >
+{% endblock content %}
+
+
+
+    <!-- <p> <a href="{% url 'follow_dvr' %}" class='btn btn-info'>إضافة متابعة</a>  -->
+    <!-- 
+    dvr             
+    images
+    mic   
+    record
+    hdd   
+    power 
+    lan   
+    created_at
+    -->
+

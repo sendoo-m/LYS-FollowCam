@@ -21,25 +21,9 @@
 </head>
 
 <body>
-    <div class="wrapper">
-      <header>
-        <nav  class="navbar navbar-expand-lg navbar-dark navbar-sm {% block navbar %} bg-warning {% endblock %}">
-          <a class="navbar-brand flex-grow-1 text-center small-title text-dark" style="color: #fff; left: 50%; transform: translateX(-50%); position: relative;">
-             LYS Al-Manar Follow Cam system v22.1.0
-          </a>
-        </nav>
-      </header>
-      <div class='container bg-secondary'>
-      <nav class="nav">
-        <a class="nav-link active  link-light" aria-current="page" href="{% url 'home' %}">الرئيسية</a>
-        <a class="nav-link  link-light" href="{% url 'add_dvr' %}">إضافة DVR</a>
-        <a class="nav-link  link-light" href="{% url 'all_dvr' %}"> All DVR's</a>
-       {% comment %} <a class="nav-link  link-light" href="{% url 'follow_dvr' %}">دفع </a> {% endcomment %}
-      </nav>
-    </div>
-      <!-- ===== Block contente (ROOT) ===== -->
-      {% block content %} {% endblock content %}
-    </div>
+  {% include "parties/topnav.html" %}
+  <!-- ===== Block contente (ROOT) ===== -->
+    {% block content %} {% endblock content %}
 
     <!-- Footer -->
   

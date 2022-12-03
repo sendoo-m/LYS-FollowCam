@@ -1,14 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'parties/base.html' %}
 {% load crispy_forms_tags %}
 
 <!-- Block Title -->
 {% block title %} Login {% endblock title %}
 
 <!-- Block Navbar -->
-{% block navbar %} bg-primary {% endblock navbar %}
+{% block navbar %} bg-warning {% endblock navbar %}
 
 {% block nav-content %}
+<a class="navbarbrand flex-grow-1 text-center" style="left: 50%; transform: translateX(-50%); position: relative;">
 <i class="fas fa-key"></i> &nbsp; &nbsp; LOGIN
+</a>
 {% endblock nav-content %}
 
 <!-- Page Contant -->
@@ -39,4 +41,4 @@
         </div>
     </form>
 </div>
-{% endblock content %}
+{% endblock content %} 

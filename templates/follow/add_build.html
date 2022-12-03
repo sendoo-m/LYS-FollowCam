@@ -1,10 +1,13 @@
 {% extends 'parties/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %} Follow DVR |تقرير المهندس المسؤول   {% endblock title %} 
+{% block title %}Add New DVR|  تسجيل جديد {% endblock title %} 
 {% block content %}
 
 
 <div class="container mt-3" style='width: 95%; font-size: 14px'>
+
+
+
 
 <!-- Message from backend [Success views.py] -->
 <div class="text-center">
@@ -23,19 +26,13 @@
         <!-- Card 1 -->
     <div class="card border-dark p-3">
         <span class="btn btn-secondary mb-4" style="cursor: default">
-                &nbsp; &nbsp; | قم بإضافة تقرير |  &nbsp; &nbsp; 
+                &nbsp; &nbsp; | قم بإضافة مبنى |  &nbsp; &nbsp; 
         </span>
         <div class="row">
-            <div class="col-3">{{ form.dvr|as_crispy_field }}</div>
-            <div class="col-3">{{ form.images|as_crispy_field }}</div>
-            <div class="col-3">{{ form.mic|as_crispy_field }}</div>
-            <div class="col-3">{{ form.record|as_crispy_field }}</div>
-            <div class="col-3">{{ form.hdd|as_crispy_field }}</div>
-            <div class="col-3">{{ form.power|as_crispy_field }}</div>
-            <div class="col-3">{{ form.lan|as_crispy_field }}</div>
-            <div class="col-3">{{ form.notes|as_crispy_field }}</div>
-            
-                    
+            <div class="col-4">{{ form.b_name|as_crispy_field }}</div>
+            <div class="col-4">{{ form.stage|as_crispy_field }}</div>
+            <div class="col-4">{{ form.it_support|as_crispy_field }}</div>
+        
     </div>
     <br />
     <div><hr style="border: 1px solid #007bff;"></div>
