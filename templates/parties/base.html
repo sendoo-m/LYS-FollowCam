@@ -21,7 +21,11 @@
 </head>
 
 <body>
-  {% include "parties/topnav.html" %}
+  {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+    {% include "parties/topnavadmin.html" %}
+  {% else %}
+    {% include "parties/topnav.html" %}
+  {% endif %}
   <!-- ===== Block contente (ROOT) ===== -->
     {% block content %} {% endblock content %}
 

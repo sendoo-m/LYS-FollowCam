@@ -1,20 +1,20 @@
-{% extends 'partials/base.html' %}
+{% extends 'parties/base.html' %}
 {% load static %}
 {% block title  %}Logout User{% endblock title %}
 {% block content %}
 
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-md-6 offset-md-3">
+<div class="container mt-5" style="width: 40%;">
+        <div class="row mt-5">
+        
             <div class="border bg-white p-3">
-                <h3> Log Out Page </h3>
+                <h3> صفحة تسجيل الخروج </h3>
                 <hr>
                 <div class="alert alert-danger">
-                    <h4> You Have log out </h4>
+                    <h4> تم تسجيل الخروج من النظام بنجاح </h4>
                 </div>
-                <a href="{% url 'user-login' %}">Login</a>
+                <a href="{% url 'user-login' %}">تسجيل الدخول مرة اخري</a>
             </div>
-        </div>
+        
     </div>
 </div>
 {% endblock content %}

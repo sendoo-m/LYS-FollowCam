@@ -37,12 +37,12 @@ def profile_update(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return redirect('staff-profile')
+            return redirect('profile_update')
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
     context ={
-        'user_form': user_form,
-        'profile_form': profile_form,
-    }
+            'user_form':user_form,
+            'profile_form':profile_form,
+            }
     return render(request, 'user/profile_update.html', context)

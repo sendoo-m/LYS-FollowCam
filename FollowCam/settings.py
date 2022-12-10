@@ -144,11 +144,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # django_heroku.settings(locals())
 
 
-# LOGIN/LOGOUT
-LOGIN_URL           = 'user-login'
-# LOGIN_REDIRECT_URL  = 'home'
-LOGOUT_URL          = 'user-logout'
-# LOGOUT_REDIRECT_URL = 'home'
+
 
 # ======================== JAZZMIN THEME ======================|
 
@@ -292,3 +288,9 @@ JAZZMIN_SETTINGS = {
     # Add a language dropdown into the admin
     # "language_chooser": True,
 }
+
+# LOGIN/LOGOUT
+# LOGIN_URL           = 'user-login'
+LOGIN_REDIRECT_URL  = 'home'
+# LOGOUT_URL          = 'user-logout'
+# LOGOUT_REDIRECT_URL = 'user-logout'

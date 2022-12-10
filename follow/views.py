@@ -46,8 +46,8 @@ def add_dvr(request):
 def all_dvr(request):
     
     context = {
-        'all_dvr1' :Add_DVR.objects.all(),
-        'all_dvr2' :Building.objects.all()
+        'all_dvr1' :Add_DVR.objects.all().order_by('ips'),
+        'all_dvr2' :Building.objects.all(),
         }
     return render(request, 'follow/all_dvr.html' , context)
 

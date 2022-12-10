@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <header>
+    <nav  class="navbar navbar-expand-lg navbar-dark navbar-sm {% block navbar %} bg-warning {% endblock %}">
+      <a class="navbar-brand flex-grow-1 text-center small-title text-dark" style="color: #fff; left: 50%; transform: translateX(-50%); position: relative;">
+         LYS Al-Manar Follow Cam system v22.1.0
+      </a>
+    </nav>
+  </header>
+  
+  <div class="container d-flex  bg-secondary mb-3 p-3">
+    <div class="d-flex "><a class="nav-link active  link-light" aria-current="page" href="{% url 'home' %}">الرئيسية</a></div>
+    <div class="d-flex "><a class="nav-link  link-light" href="{% url 'add_build' %}"> إضافة مبنى </a></div>
+    <div class="d-flex "><a class="nav-link  link-light" href="{% url 'add_dvr' %}">إضافة DVR</a></div>
+    <div class="d-flex "><a class="nav-link  link-light" href="{% url 'all_dvr' %}"> All DVR's</a></div>
+    <!-- <div class="d-flex "><a class="nav-link  link-light" href="{% url 'follow_dvr' %}">متابعة </a></div> -->
+    <div class="d-flex ms-auto"><a class="nav-link  link-light" href="{% url 'follow_results' %}">تقرير المتابعات</a></div>
+    <div class="d-flex "><a class="nav-link  link-light"> Welcome {{ user.username }}</a></div>
+    <div class="d-flex "><a class="nav-link  link-light" href="{% url 'user-logout' %}"> تسجيل الخروج</a></div>
+  </div>
+  <hr>

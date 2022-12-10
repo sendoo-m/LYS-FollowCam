@@ -15,19 +15,19 @@
 
 <!-- Page Contant -->
 {% block content %}
-<div class="container card p-3 border-dark mt-5" style="width: 30%;">
+<div class="container card p-3 border-dark mt-5" style="width: 40%;">
     <!-- Error message from backend forms.py -->
     <!-- 2 [Indevidual  Fielde Error Messages from (forms.py)]
  striptags لتحويل النقط رسائل عادية-->
 {% if form.errors %}
-        <div class="alert alert-danger alert-dismissible fade show text-center {{ message.tags }}" role="alert"><strong>Enter your data correctly.</strong>
-        <a href="{% url 'home'%}" type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close" ></a>
-    </div> 
+        <div class="alert alert-danger alert-dismissible fade show text-center {{ message.tags }}" role="alert"><strong>اكتب البيانات مظبوطة يا برنس مش هنصيع</strong>
+            <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="close" ></button>
+        </div> 
 {% endif %}
 
     <!-- Title -->
     <a class="btn btn-dark mb-4" style="cursor: defult;">
-        <i class="fas fa-lock"></i> &nbsp; &nbsp; RESTRICTED ACCESS
+        <i class="fas fa-lock"></i> &nbsp; &nbsp; الدخول على نظام متابعة الكاميرات
     </a>
     <!-- Form -->
     <form method="POST" autocomplete="off" novalidate>
@@ -36,9 +36,13 @@
         {{ form.password|as_crispy_field }}
         <br> <hr>
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary">LOG IN</button>
-            <a href="{% url 'home' %}" class="btn btn-secondary">CANCEL</a>
+            <button type="submit" class="btn btn-primary">تسجيل دخول</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary">الغاء</a>
         </div>
     </form>
 </div>
+<br >
+<br >
+<br >
+<br >
 {% endblock content %} 

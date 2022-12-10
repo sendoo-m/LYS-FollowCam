@@ -5,12 +5,23 @@ from django.db import models
 BUILDING        = (
     ('','اختار المبني'),
     ('رياض أطفال','رياض أطفال'),
+    ('روضة الاطفال','روضة الاطفال'),
     ('معاذ ابن جبل','معاذ ابن جبل'),
     ('أبو بكر الصديق','أبو بكر الصديق'),
     ('إعدادي وثانوي','إعدادي وثانوي'),
     ('الامريكية','الامريكية'),
     ('الامريكية الجديد','الامريكية الجديد'),
     ('الإدارة','الإدارة'),
+)
+
+ITSUPPORT       = (
+    ('','المهندس المسؤل'),
+    ('م. تامر خير','م. تامر خير'),
+    ('م. محمد جمال','م. محمد جمال'),
+    ('م. محمود خير','م. محمود خير'),
+    ('م. محمد شوقي','م. محمد شوقي'),
+    ('م. أحمد يونس','م. أحمد يونس'),
+    ('م. شحاته عبدالعزيز','م. شحاته عبدالعزيز'),
 )
 
 FOLLOW          =(
@@ -26,7 +37,7 @@ class Add_DVR(models.Model):
     floor           = models.CharField(max_length=30, null=True, blank=True)
     ips             = models.CharField(max_length=30, null=True, blank=True)
     ports           = models.CharField(max_length=30, null=True, blank=True)
-    build           = models.ForeignKey('Building',on_delete=models.CASCADE)
+    build           = models.OneToOneField('Building',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -34,7 +45,7 @@ class Add_DVR(models.Model):
 class Building(models.Model):
     b_name          = models.CharField(choices=BUILDING,max_length=30, null=True, blank=True)
     stage           = models.CharField(max_length=30, null=True, blank=True)
-    it_support      = models.CharField(max_length=30, null=True, blank=True)
+    it_support      = models.CharField(choices=ITSUPPORT,max_length=30, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.b_name
@@ -50,4 +61,6 @@ class Follow(models.Model):
     created_at      = models.DateTimeField(auto_now_add=True, null=True, blank=True )
     notes           = models.CharField(max_length=500, null=True, blank=True)
 
+    def __str__(self) -> str:
+        return self.dvr
     
