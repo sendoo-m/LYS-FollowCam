@@ -3,6 +3,18 @@
 {% load static %}
 {% block content %}
 
+
+<!-- 
+
+  {% if user.is_authenticated %}
+  <form method="post" action="{% url 'add_dvr' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Add DVR</button>
+  </form>
+{% endif %}
+
+-->
 <div class='container'>
 {% if user.is_authenticated and user.is_staff and user.is_superuser %}
 
