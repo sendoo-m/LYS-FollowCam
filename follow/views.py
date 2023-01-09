@@ -15,6 +15,8 @@ from django.db.models import Q # for search
 # Concatenated F-name and L-name
 from django.db.models.functions import Concat # Concatenated
 from django.db.models import Value as P #(P=Plus)
+from django.core.paginator import Paginator, PageNotAnInteger
+from .filters import FollowFilter
 
 ##====================================##
 # Create your views here.
@@ -99,13 +101,56 @@ def follow_dvr(request):
 
 
 
+# @login_required(login_url='user-login')
+# @cache_control(no_cache=True, must_revalidate=True, no_store=True)
+# def follow_results(request):
+#     # Get the page number from the request query string
+#     # If no page number is specified, default to page 1
+#     page_number = request.GET.get('page', 1)
+
+#     # Create a Paginator object with a specified number of items per page
+#     paginator = Paginator(Follow.objects.all(), 10)
+
+#     # Use the Paginator object to get the specified page of results
+#     follow_results = paginator.get_page(page_number)
+#     follow_results_list = Follow.objects.all()
+#     follow_results_filter = FollowFilter(request.GET, queryset=follow_results_list)
+#     context = {
+#         'follow_results' :Follow.objects.all(),
+#         'follow_results_filter': follow_results_filter,
+#         }
+#     return render(request, 'follow/follow_results.html' , context)
 @login_required(login_url='user-login')
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def follow_results(request):
+    follow_results = Follow.objects.all()
+    if request.method == 'GET':
+        form = FollowFilterForm(request.GET)
+        if form.is_valid():
+            user = form.cleaned_data['user']
+            
+            dvr_name = form.cleaned_data['dvr_name']
+            if user:
+                follow_results = follow_results.filter(user=user)
+            if dvr_name:
+                follow_results = follow_results.filter(dvr_name__icontains=dvr_name)
+    else:
+        form = FollowFilterForm()
+    # Add pagination to the view
+    paginator = Paginator(follow_results, 10)
+    page = request.GET.get('page')
+    try:
+        follow_results = paginator.page(page)
+    except PageNotAnInteger:
+        follow_results = paginator.page(1)
+    except EmptyPage:
+        follow_results = paginator.page(paginator.num_pages)
+
     context = {
-        'follow_results' :Follow.objects.all()
-        }
-    return render(request, 'follow/follow_results.html' , context)
+        'form': form,
+        'follow_results': follow_results
+    }
+    return render(request, 'follow/follow_results.html', context)
 
 
 

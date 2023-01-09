@@ -39,7 +39,7 @@ class Add_DVR(models.Model):
     floor           = models.CharField(max_length=30, null=True, blank=True)
     ips             = models.CharField(max_length=30, null=True, blank=True)
     ports           = models.CharField(max_length=30, null=True, blank=True)
-    build           = models.OneToOneField('Building',on_delete=models.CASCADE)
+    build           = models.ForeignKey('Building',on_delete=models.CASCADE)
 
     def __str__(self):
         if not self.name:
@@ -51,7 +51,7 @@ class Building(models.Model):
     stage           = models.CharField(max_length=30, null=True, blank=True)
     it_support      = models.CharField(choices=ITSUPPORT,max_length=30, null=True, blank=True)
     user            = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    
+
     def __str__(self) -> str:
         return self.b_name or ''
 
@@ -65,6 +65,7 @@ class Follow(models.Model):
     lan             = models.CharField(choices=FOLLOW, max_length=30, null=True, blank=True)
     created_at      = models.DateTimeField(auto_now_add=True, null=True, blank=True )
     notes           = models.CharField(max_length=500, null=True, blank=True)
+    user            = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         if not self.dvr:

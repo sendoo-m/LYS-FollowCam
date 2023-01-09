@@ -13,12 +13,25 @@ class FollowAdmin(ImportExportModelAdmin):  # ImportExportModelAdmin بديله 
     # radio_fields    = {"smoker": admin.HORIZONTAL} # to convert in admin panel to horizontal
     form                = FollowForm
     # exclude         = ['status'] # لإظهار الحالة والتحكم فيها
-    # list_display        = ['']
     # search_fields   = ['firstname','lastname','email','situation']
     # list_filter     = ['situation','firstname']
     list_per_page       = 10
 
-admin.site.register(Add_DVR)
-admin.site.register(Building)
-admin.site.register(Follow,FollowAdmin)
+class BuildingAdmin(admin.ModelAdmin):
+    form = BuildingForm
+    list_display = ['b_name','stage' ,'user']
+    search_fields   = ['stage','b_name']
+    list_filter     = ['b_name','stage','user']
+    list_per_page = 10
+
+class Add_DVRAdmin(admin.ModelAdmin):
+    form = Add_DVRForm
+    list_display = ['name','floor' ,'ips','ports','build']
+    search_fields   = ['name','floor','ips','ports']
+    list_filter     = ['name','ips',]
+    list_per_page = 10
+
+admin.site.register(Add_DVR, Add_DVRAdmin)
+admin.site.register(Building, BuildingAdmin)
+admin.site.register(Follow, FollowAdmin)
 

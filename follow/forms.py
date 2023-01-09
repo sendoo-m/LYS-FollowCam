@@ -21,3 +21,11 @@ class FollowForm(forms.ModelForm):
         model       = Follow
         fields      = '__all__'
         
+class FollowFilterForm(forms.Form):
+    class Meta:
+        model       = Follow
+        # fields      = '__all__'
+
+    user = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
+    
+    dvr_name = forms.CharField(max_length=100, required=False)
