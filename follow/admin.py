@@ -21,3 +21,4 @@ class FollowAdmin(ImportExportModelAdmin):  # ImportExportModelAdmin بديله 
 admin.site.register(Add_DVR)
 admin.site.register(Building)
 admin.site.register(Follow,FollowAdmin)
+

@@ -106,3 +106,55 @@ def follow_results(request):
         'follow_results' :Follow.objects.all()
         }
     return render(request, 'follow/follow_results.html' , context)
+
+
+
+# def create_building_permissions():
+#     # Get or create the `Abo Bakr` group
+#     building_1_group, created = Group.objects.get_or_create(name='Abo Bakr')
+#     # Get the `Can view Abo Bakr` permission
+#     building_1_view_permission = Permission.objects.get(name='Can view Abo Bakr')
+#     # Add the `Can view Abo Bakr` permission to the `Abo Bakr` group
+#     building_1_group.permissions.add(building_1_view_permission)
+#     # Save the `Abo Bakr` group
+#     building_1_group.save()
+
+#     # Repeat the process for the `Administrator Build` group
+#     building_2_group, created = Group.objects.get_or_create(name='Administrator Build')
+#     building_2_view_permission = Permission.objects.get(name='Can view Administrator Build')
+#     building_2_group.permissions.add(building_2_view_permission)
+#     building_2_group.save()
+
+#     # Repeat the process for the `KG` group
+#     building_2_group, created = Group.objects.get_or_create(name='KG')
+#     building_2_view_permission = Permission.objects.get(name='Can view KG')
+#     building_2_group.permissions.add(building_2_view_permission)
+#     building_2_group.save()
+
+#     # Repeat the process for the `New American` group
+#     building_2_group, created = Group.objects.get_or_create(name='New American')
+#     building_2_view_permission = Permission.objects.get(name='Can view New American')
+#     building_2_group.permissions.add(building_2_view_permission)
+#     building_2_group.save()
+
+#     # Repeat the process for the `American` group
+#     building_2_group, created = Group.objects.get_or_create(name='American')
+#     building_2_view_permission = Permission.objects.get(name='Can view American')
+#     building_2_group.permissions.add(building_2_view_permission)
+#     building_2_group.save()
+
+#     # Repeat the process for the `Moaaz` group
+#     building_2_group, created = Group.objects.get_or_create(name='Moaaz')
+#     building_2_view_permission = Permission.objects.get(name='Can view Moaaz')
+#     building_2_group.permissions.add(building_2_view_permission)
+#     building_2_group.save()
+
+#     # Repeat the process for the `Prep and Secondary` group
+#     building_2_group, created = Group.objects.get_or_create(name='Prep and Secondary')
+#     building_2_view_permission = Permission.objects.get(name='Can view Prep and Secondary')
+#     building_2_group.permissions.add(building_2_view_permission)
+#     building_2_group.save()
+
+    
+# # Run the `create_building_permissions` function
+# create_building_permissions()

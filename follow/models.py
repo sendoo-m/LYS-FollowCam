@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -40,15 +42,18 @@ class Add_DVR(models.Model):
     build           = models.OneToOneField('Building',on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        if not self.name:
+            return ""
+        return str(self.name)
     
 class Building(models.Model):
     b_name          = models.CharField(choices=BUILDING,max_length=30, null=True, blank=True)
     stage           = models.CharField(max_length=30, null=True, blank=True)
     it_support      = models.CharField(choices=ITSUPPORT,max_length=30, null=True, blank=True)
-
+    user            = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    
     def __str__(self) -> str:
-        return self.b_name
+        return self.b_name or ''
 
 class Follow(models.Model):
     dvr             = models.ForeignKey(Add_DVR, on_delete=models.CASCADE )
@@ -61,6 +66,8 @@ class Follow(models.Model):
     created_at      = models.DateTimeField(auto_now_add=True, null=True, blank=True )
     notes           = models.CharField(max_length=500, null=True, blank=True)
 
-    def __str__(self) -> str:
-        return self.dvr
+    def __str__(self):
+        if not self.dvr:
+            return ""
+        return str(self.dvr)
     

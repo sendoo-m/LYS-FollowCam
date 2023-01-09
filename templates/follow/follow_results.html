@@ -23,9 +23,11 @@
         <th scope="col">كابل الشبكة</th>
         <th scope="col">بتاريخ</th>
         <th scope="col">ملاحظات</th>
+        <th scope="col">IT</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
+
         {% for add in follow_results %}
       <tr>
         <th scope="row"><a href="{% url 'all_dvr' %}">{{ add.dvr }}</a></th>
@@ -37,6 +39,9 @@
         <td>{{ add.lan }}</td>
         <td>{{ add.created_at }}</td>
         <td>{{ add.notes }}</td>
+        {% if user.is_authenticated %}
+        <td>{{ user.staff.user }}</td>
+        {% endif %}
         {% endfor %}            
       </tr>
     </tbody>
