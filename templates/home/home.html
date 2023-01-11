@@ -39,7 +39,7 @@
     <tbody class="table-group-divider">
         {% for add in follow_results %}
       <tr>
-        <th scope="row"><a href="{% url 'all_dvr' %}">{{ add.dvr }}</a></th>
+        <th scope="row"><a href="{% url 'about_dvr' add.pk %}">{{ add.dvr }}</a></th>
         <td>{{ add.images }}</td>
         <td>{{ add.mic }}</td>
         <td>{{ add.record }}</td>
@@ -51,7 +51,22 @@
         {% endfor %}            
       </tr>
     </tbody>
-  </table> 
+  </table>
+  <div class="pagination">
+    <span class="step-links">
+        {% if follow_results.has_previous %}
+            <a href="?page={{ follow_results.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ follow_results.number }} of {{ follow_results.paginator.num_pages }}.
+        </span>
+
+        {% if follow_results.has_next %}
+            <a href="?page={{ follow_results.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div> 
 <hr>
 <span class="btn btn-success mb-4" style="cursor: default">
     &nbsp; &nbsp; | عرض DVR والمباني |  &nbsp; &nbsp; 
@@ -70,7 +85,7 @@
     <tbody class="table-group-divider">
         {% for add in all_dvr1 %}
       <tr>
-        <th scope="row">{{ add.name }}</th>
+        <th scope="row"><a href="{% url 'about_dvr' add.pk %}">{{ add.name }}</a></th>
         <td>{{ add.ports }}</td>
         <td>{{ add.floor }}</td>
         <td>{{ add.build }}</td>

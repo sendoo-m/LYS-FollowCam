@@ -28,4 +28,9 @@ class FollowFilterForm(forms.Form):
 
     user = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
     
-    dvr_name = forms.CharField(max_length=100, required=False)
+    # dvr_name = forms.CharField(max_length=100, required=False)
+
+class DVR_infoForm(forms.ModelForm):
+    class Meta:
+        model       = DVR_info
+        fields      = '__all__'

@@ -31,7 +31,14 @@ class Add_DVRAdmin(admin.ModelAdmin):
     list_filter     = ['name','ips',]
     list_per_page = 10
 
+class DVR_infoAdmin(admin.ModelAdmin):
+    form = DVR_infoForm
+    list_display = ['dvr','dvr_typ' ,'dvr_ip','dvr_cam_connect','dvr_cam_place']
+    search_fields   = ['dvr','dvr_cam_place','dvr_ip','dvr_ports']
+    list_filter     = ['dvr','dvr_ip',]
+    list_per_page = 10
+
+admin.site.register(DVR_info, DVR_infoAdmin)
 admin.site.register(Add_DVR, Add_DVRAdmin)
 admin.site.register(Building, BuildingAdmin)
 admin.site.register(Follow, FollowAdmin)
-

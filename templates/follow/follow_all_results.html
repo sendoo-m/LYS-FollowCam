@@ -1,0 +1,80 @@
+{% extends 'parties/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}All DVR|  إجمالي التقرير{% endblock title %}
+{% block content %}
+
+<div class="container mt-3" style='width: 95%; font-size: 14px'>
+  
+  <div class="card border-dark p-3">
+    <span class="btn btn-secondary mb-4" style="cursor: default">
+      تقرير إجمالي المباني بجميع DVR
+    </span>
+    <div class="card border-dark p-3">
+    <form method="get" action="{% url 'follow_all_results' %}">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-3">{{ form.user }}</div>
+
+      </div>
+      <button type="submit" class="btn btn-primary col-3">Filter</button>
+    </form>
+  
+    </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">اسم DVR</th>
+        <th scope="col">الصورة </th>
+        <th scope="col">الصوت</th>
+        <th scope="col">التسجيل</th>
+        <th scope="col">حالة الهارد</th>
+        <th scope="col">مزود الطاقة</th>
+        <th scope="col">كابل الشبكة</th>
+        <th scope="col">بتاريخ</th>
+        <th scope="col">ملاحظات</th>
+        
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+
+        {% for add in follow_all_results %}
+      <tr>
+        <th scope="row"><a href="{% url 'all_dvr' %}">{{ add.dvr }}</a></th>
+        <td>{{ add.images }}</td>
+        <td>{{ add.mic }}</td>
+        <td>{{ add.record }}</td>
+        <td>{{ add.hdd }}</td>
+        <td>{{ add.power }}</td>
+        <td>{{ add.lan }}</td>
+        <td>{{ add.created_at }}</td>
+        <td>{{ add.notes }}</td>
+        
+        {% endfor %}            
+      </tr>
+    </tbody>
+  </table> 
+<!-- Add navigation links to the other pages -->
+{% if follow_results.has_previous %}
+  <a href="?page={{ follow_results.previous_page_number }}">Previous</a>
+{% endif %}
+
+{% for page in follow_results.paginator.page_range %}
+  {% if page == follow_results.number %}
+    {{ page }}
+  {% else %}
+    <a href="?page={{ page }}">{{ page }}</a>
+  {% endif %}
+{% endfor %}
+
+{% if follow_results.has_next %}
+  <a href="?page={{ follow_results.next_page_number }}">Next</a>
+{% endif %}
+</div>
+      
+</div> <!--End container-->
+<br >
+<br >
+<br >
+<br >
+{% endblock content %}
+

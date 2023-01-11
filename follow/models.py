@@ -71,4 +71,18 @@ class Follow(models.Model):
         if not self.dvr:
             return ""
         return str(self.dvr)
-    
+
+class DVR_info(models.Model):
+    dvr             = models.OneToOneField(Add_DVR, on_delete=models.CASCADE )
+    dvr_typ         = models.CharField("نوعه", max_length=30, null=True, blank=True)
+    drv_mic         = models.CharField("عدد المايك", max_length=30, null=True, blank=True)
+    dvr_ports       = models.CharField("عدد المخارج", max_length=30, null=True, blank=True)
+    dvr_cam_connect = models.CharField("عدد الكاميرات", max_length=30, null=True, blank=True)
+    dvr_cam_place   = models.CharField("مكانه دور ومبني", max_length=30, null=True, blank=True)
+    dvr_ip          = models.CharField("IP", max_length=30, null=True, blank=True) 
+    dvr_notes       = models.TextField("ملاحظات", max_length=30, null=True, blank=True)
+
+    def __str__(self):
+        if not self.dvr:
+            return ""
+        return str(self.dvr)
